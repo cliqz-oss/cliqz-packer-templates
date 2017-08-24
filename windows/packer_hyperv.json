@@ -14,7 +14,7 @@
             "switch_name": "internal_switch",
             "floppy_files": [
                "answer_files/Autounattend.xml",
-               "scripts/winrm.ps1"
+               "scripts/userdata.ps1"
             ]
         }
     ],
