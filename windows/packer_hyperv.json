@@ -1,0 +1,108 @@
+{
+    "builders": [
+        {
+            "type": "hyperv-iso",
+            "iso_url": "C:/Users/root/Downloads/9200.16384.WIN8_RTM.120725-1247_X64FRE_SERVER_EVAL_EN-US-HRM_SSS_X64FREE_EN-US_DV5.ISO",
+            "iso_checksum": "922b365c3360ce630f6a4b4f2f3c79e66165c0fb",
+            "iso_checksum_type": "sha1",
+            "winrm_username": "vagrant",
+            "winrm_password": "vagrant",
+            "ram_size": 2048,
+            "communicator": "winrm",
+            "winrm_timeout": "12h",
+            "shutdown_command": "scripts/PackerShutdown.bat",
+            "switch_name": "internal_switch",
+            "floppy_files": [
+               "answer_files/Autounattend.xml",
+               "scripts/winrm.ps1"
+            ]
+        }
+    ],
+    "provisioners": [
+    {
+        "type": "powershell",
+        "scripts": [
+            "Ec2Config.ps1",
+            "BundleConfig.ps1",
+            "ConfigureRemotingForAnsible.ps1"
+    ]
+    },
+    {
+        "type": "powershell",
+        "inline": ["New-Item -ItemType Directory -Force -Path C:\\jenkins\\"]
+    },
+  {
+    "type": "file",
+    "source": "downloadr.exe",
+    "destination": "c:\\jenkins\\downloadr.exe"
+  },
+  {
+    "type": "file",
+    "source": "config.json",
+    "destination": "C:\\jenkins\\config.json"
+  },
+  {
+    "type": "windows-shell",
+    "inline": ["C:\\jenkins\\downloadr.exe -configFile C:\\jenkins\\config.json"],
+    "environment_vars": [
+        "AWS_SECRET_ACCESS_KEY={{user `aws_secret_access_key`}}",
+        "AWS_ACCESS_KEY_ID={{user `aws_access_key_id`}}"
+    ]
+  },
+  {
+    "type" : "windows-shell",
+    "inline" : ["net stop WSearch", "REG add \"HKLM\\SYSTEM\\CurrentControlSet\\Services\\WSearch\" /v Start /t REG_DWORD /d 4 /f" ]
+  },
+  {
+    "type" : "windows-shell",
+    "inline" : ["REG ADD \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\" /v AutoDetect /t REG_DWORD /d 0 /f"]
+  },
+  {
+    "type": "powershell",
+    "execute_command": "powershell -ExecutionPolicy Bypass \"& { {{.Vars}}{{.Path}}; exit $LastExitCode}\"",
+    "scripts": [
+      "enable-rdp.ps1",
+      "disable-hibernate.ps1",
+      "disable-autologin.ps1",
+      "enable-uac.ps1",
+      "no-expiration.ps1",
+      "turn-off-windows-updates.ps1",
+      "openssh.ps1",
+      "windows-defender-exclusion.ps1",
+      "disable-geolocation.ps1",
+      "turn-off-windows-screensaver.ps1"
+    ]
+  },
+  {
+    "type" : "windows-shell",
+    "inline" : ["c:\\windows\\system32\\powercfg.exe -change -monitor-timeout-ac 0", "c:\\windows\\system32\\powercfg.exe -change -monitor-timeout-dc 0", "c:\\windows\\system32\\powercfg.exe -change -disk-timeout-ac 0","c:\\windows\\system32\\powercfg.exe -change -disk-timeout-dc 0","c:\\windows\\system32\\powercfg.exe -change -standby-timeout-ac 0","c:\\windows\\system32\\powercfg.exe -change -standby-timeout-dc 0","c:\\windows\\system32\\powercfg.exe -change -hibernate-timeout-ac 0","c:\\windows\\system32\\powercfg.exe -change -hibernate-timeout-dc 0"]
+  },
+  {
+    "type" : "windows-shell",
+    "inline" : ["c:\\jenkins\\tools\\Git-2.10.0-32-bit.exe /VERYSILENT", "c:\\jenkins\\tools\\DXSDK_Jun10.exe /U", "C:\\jenkins\\tools\\go1.6.3.windows-amd64.msi /quiet /norestart" ]
+  },
+  {
+    "type" : "windows-shell",
+    "inline" : ["net stop WSearch", "REG add \"HKLM\\SYSTEM\\CurrentControlSet\\Services\\WSearch\" /v Start /t REG_DWORD /d 4 /f" ]
+  },
+  {
+    "type" : "windows-shell",
+    "inline" : ["REG ADD \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\" /v AutoDetect /t REG_DWORD /d 0 /f"]
+  },
+  {
+    "type" : "powershell",
+    "execute_command": "powershell -ExecutionPolicy Bypass \"& { {{.Vars}}{{.Path}}; exit $LastExitCode}\"",
+    "scripts" : [
+      "./extract-zip.ps1",
+      "./install-vs.ps1",
+      "./set-git-config.ps1",
+      "./create-dirs.ps1"
+    ]
+  },
+  {
+     "type" : "windows-shell",
+     "inline": "cd c:\\mozilla-build\\python & python -m pip install compare-locales"
+  }
+]
+}
+
