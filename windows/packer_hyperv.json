@@ -11,7 +11,7 @@
             "communicator": "winrm",
             "winrm_timeout": "12h",
             "shutdown_command": "scripts/PackerShutdown.bat",
-            "switch_name": "internal_switch",
+            "switch_name": "external_switch",
             "floppy_files": [
                "answer_files/Autounattend.xml",
                "scripts/userdata.ps1"
