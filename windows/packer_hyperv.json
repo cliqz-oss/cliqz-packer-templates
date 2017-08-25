@@ -2,7 +2,7 @@
     "builders": [
         {
             "type": "hyperv-iso",
-            "iso_url": "14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO",
+            "iso_url": "C:/Users/root/Downloads/14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO",
             "iso_checksum": "772700802951b36c8cb26a61c040b9a8dc3816a3",
             "iso_checksum_type": "sha1",
             "winrm_username": "vagrant",
