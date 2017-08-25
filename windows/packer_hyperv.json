@@ -32,24 +32,6 @@
         "inline": ["New-Item -ItemType Directory -Force -Path C:\\jenkins\\"]
     },
   {
-    "type": "file",
-    "source": "downloadr.exe",
-    "destination": "c:\\jenkins\\downloadr.exe"
-  },
-  {
-    "type": "file",
-    "source": "config.json",
-    "destination": "C:\\jenkins\\config.json"
-  },
-  {
-    "type": "windows-shell",
-    "inline": ["C:\\jenkins\\downloadr.exe -configFile C:\\jenkins\\config.json"],
-    "environment_vars": [
-        "AWS_SECRET_ACCESS_KEY={{user `aws_secret_access_key`}}",
-        "AWS_ACCESS_KEY_ID={{user `aws_access_key_id`}}"
-    ]
-  },
-  {
     "type" : "windows-shell",
     "inline" : ["net stop WSearch", "REG add \"HKLM\\SYSTEM\\CurrentControlSet\\Services\\WSearch\" /v Start /t REG_DWORD /d 4 /f" ]
   },
@@ -61,6 +43,7 @@
     "type": "powershell",
     "execute_command": "powershell -ExecutionPolicy Bypass \"& { {{.Vars}}{{.Path}}; exit $LastExitCode}\"",
     "scripts": [
+      "download-setup.ps1",
       "enable-rdp.ps1",
       "disable-hibernate.ps1",
       "disable-autologin.ps1",
