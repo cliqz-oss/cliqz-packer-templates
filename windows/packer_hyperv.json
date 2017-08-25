@@ -2,8 +2,8 @@
     "builders": [
         {
             "type": "hyperv-iso",
-            "iso_url": "C:/Users/root/Downloads/9200.16384.WIN8_RTM.120725-1247_X64FRE_SERVER_EVAL_EN-US-HRM_SSS_X64FREE_EN-US_DV5.ISO",
-            "iso_checksum": "922b365c3360ce630f6a4b4f2f3c79e66165c0fb",
+            "iso_url": "14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO",
+            "iso_checksum": "772700802951b36c8cb26a61c040b9a8dc3816a3",
             "iso_checksum_type": "sha1",
             "winrm_username": "vagrant",
             "winrm_password": "vagrant",
