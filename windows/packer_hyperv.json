@@ -1,90 +1,98 @@
 {
-    "builders": [
-        {
-            "type": "hyperv-iso",
-            "iso_url": "C:/Users/root/Downloads/14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO",
-            "iso_checksum": "772700802951b36c8cb26a61c040b9a8dc3816a3",
-            "iso_checksum_type": "sha1",
-            "winrm_username": "vagrant",
-            "winrm_password": "vagrant",
-            "ram_size": 2048,
-            "communicator": "winrm",
-            "winrm_timeout": "12h",
-            "shutdown_command": "",
-            "shutdown_timeout": "300s",
-            "switch_name": "external_switch",
-            "floppy_files": [
-               "answer_files/Autounattend.xml",
-               "scripts/userdata.ps1"
-            ]
-        }
-    ],
-    "provisioners": [
+  "builders": [
     {
-        "type": "powershell",
-        "scripts": [
-            "ConfigureRemotingForAnsible.ps1"
-    ]
+      "type": "hyperv-iso",
+      "iso_url": "C:/Users/root/Downloads/14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO",
+      "iso_checksum": "772700802951b36c8cb26a61c040b9a8dc3816a3",
+      "iso_checksum_type": "sha1",
+      "winrm_username": "vagrant",
+      "winrm_password": "vagrant",
+      "ram_size": 2048,
+      "communicator": "winrm",
+      "winrm_timeout": "12h",
+      "shutdown_command": "",
+      "shutdown_timeout": "300s",
+      "switch_name": "external_switch",
+      "floppy_files": [
+         "answer_files/Autounattend.xml",
+         "scripts/userdata.ps1"
+      ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "powershell",
+      "scripts": [
+          "ConfigureRemotingForAnsible.ps1"
+      ]
     },
     {
-        "type": "powershell",
-        "inline": ["New-Item -ItemType Directory -Force -Path C:\\jenkins\\"]
+      "type": "powershell",
+      "inline": ["New-Item -ItemType Directory -Force -Path C:\\jenkins\\"]
     },
-  {
-    "type" : "windows-shell",
-    "inline" : ["net stop WSearch", "REG add \"HKLM\\SYSTEM\\CurrentControlSet\\Services\\WSearch\" /v Start /t REG_DWORD /d 4 /f" ]
-  },
-  {
-    "type" : "windows-shell",
-    "inline" : ["REG ADD \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\" /v AutoDetect /t REG_DWORD /d 0 /f"]
-  },
-  {
-    "type": "powershell",
-    "execute_command": "powershell -ExecutionPolicy Bypass \"& { {{.Vars}}{{.Path}}; exit $LastExitCode}\"",
-    "scripts": [
-      "download-setup.ps1",
-      "enable-rdp.ps1",
-      "disable-hibernate.ps1",
-      "disable-autologin.ps1",
-      "enable-uac.ps1",
-      "no-expiration.ps1",
-      "turn-off-windows-updates.ps1",
-      "openssh.ps1",
-      "windows-defender-exclusion.ps1",
-      "disable-geolocation.ps1",
-      "turn-off-windows-screensaver.ps1"
-    ]
-  },
-  {
-    "type" : "windows-shell",
-    "inline" : ["c:\\windows\\system32\\powercfg.exe -change -monitor-timeout-ac 0", "c:\\windows\\system32\\powercfg.exe -change -monitor-timeout-dc 0", "c:\\windows\\system32\\powercfg.exe -change -disk-timeout-ac 0","c:\\windows\\system32\\powercfg.exe -change -disk-timeout-dc 0","c:\\windows\\system32\\powercfg.exe -change -standby-timeout-ac 0","c:\\windows\\system32\\powercfg.exe -change -standby-timeout-dc 0","c:\\windows\\system32\\powercfg.exe -change -hibernate-timeout-ac 0","c:\\windows\\system32\\powercfg.exe -change -hibernate-timeout-dc 0"]
-  },
-  {
-    "type" : "windows-shell",
-    "inline" : ["c:\\jenkins\\tools\\Git-2.10.0-32-bit.exe /VERYSILENT", "c:\\jenkins\\tools\\DXSDK_Jun10.exe /U", "C:\\jenkins\\tools\\go1.6.3.windows-amd64.msi /quiet /norestart", "c:\\jenkins\\tools\\jre-8u101-windows-x64.exe /s" ]
-  },
-  {
-    "type" : "windows-shell",
-    "inline" : ["net stop WSearch", "REG add \"HKLM\\SYSTEM\\CurrentControlSet\\Services\\WSearch\" /v Start /t REG_DWORD /d 4 /f" ]
-  },
-  {
-    "type" : "windows-shell",
-    "inline" : ["REG ADD \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\" /v AutoDetect /t REG_DWORD /d 0 /f"]
-  },
-  {
-    "type" : "powershell",
-    "execute_command": "powershell -ExecutionPolicy Bypass \"& { {{.Vars}}{{.Path}}; exit $LastExitCode}\"",
-    "scripts" : [
-      "./extract-zip.ps1",
-      "./install-vs.ps1",
-      "./set-git-config.ps1",
-      "./create-dirs.ps1"
-    ]
-  },
-  {
-     "type" : "windows-shell",
-     "inline": "cd c:\\mozilla-build\\python & python -m pip install compare-locales"
-  }
-]
+    {
+      "type" : "windows-shell",
+      "inline" : ["net stop WSearch", "REG add \"HKLM\\SYSTEM\\CurrentControlSet\\Services\\WSearch\" /v Start /t REG_DWORD /d 4 /f" ]
+    },
+    {
+      "type" : "windows-shell",
+      "inline" : ["REG ADD \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\" /v AutoDetect /t REG_DWORD /d 0 /f"]
+    },
+    {
+      "type": "powershell",
+      "execute_command": "powershell -ExecutionPolicy Bypass \"& { {{.Vars}}{{.Path}}; exit $LastExitCode}\"",
+      "scripts": [
+        "download-setup.ps1",
+        "enable-rdp.ps1",
+        "disable-hibernate.ps1",
+        "disable-autologin.ps1",
+        "enable-uac.ps1",
+        "no-expiration.ps1",
+        "turn-off-windows-updates.ps1",
+        "openssh.ps1",
+        "windows-defender-exclusion.ps1",
+        "disable-geolocation.ps1",
+        "turn-off-windows-screensaver.ps1"
+      ]
+    },
+    {
+      "type" : "windows-shell",
+      "inline" : ["c:\\windows\\system32\\powercfg.exe -change -monitor-timeout-ac 0", "c:\\windows\\system32\\powercfg.exe -change -monitor-timeout-dc 0", "c:\\windows\\system32\\powercfg.exe -change -disk-timeout-ac 0","c:\\windows\\system32\\powercfg.exe -change -disk-timeout-dc 0","c:\\windows\\system32\\powercfg.exe -change -standby-timeout-ac 0","c:\\windows\\system32\\powercfg.exe -change -standby-timeout-dc 0","c:\\windows\\system32\\powercfg.exe -change -hibernate-timeout-ac 0","c:\\windows\\system32\\powercfg.exe -change -hibernate-timeout-dc 0"]
+    },
+    {
+      "type" : "windows-shell",
+      "inline" : ["c:\\jenkins\\tools\\Git-2.10.0-32-bit.exe /VERYSILENT", "c:\\jenkins\\tools\\DXSDK_Jun10.exe /U", "C:\\jenkins\\tools\\go1.6.3.windows-amd64.msi /quiet /norestart", "c:\\jenkins\\tools\\jre-8u101-windows-x64.exe /s" ]
+    },
+    {
+      "type" : "windows-shell",
+      "inline" : ["net stop WSearch", "REG add \"HKLM\\SYSTEM\\CurrentControlSet\\Services\\WSearch\" /v Start /t REG_DWORD /d 4 /f" ]
+    },
+    {
+      "type" : "windows-shell",
+      "inline" : ["REG ADD \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\" /v AutoDetect /t REG_DWORD /d 0 /f"]
+    },
+    {
+      "type" : "powershell",
+      "execute_command": "powershell -ExecutionPolicy Bypass \"& { {{.Vars}}{{.Path}}; exit $LastExitCode}\"",
+      "scripts" : [
+        "./extract-zip.ps1",
+        "./install-vs.ps1",
+        "./set-git-config.ps1",
+        "./create-dirs.ps1"
+      ]
+    },
+    {
+       "type" : "windows-shell",
+       "inline": "cd c:\\mozilla-build\\python & python -m pip install compare-locales"
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "windows-shell",
+      "scripts": [
+        "copy-image-to-server.ps1"
+      ]
+    }
+  ]
 }
 
