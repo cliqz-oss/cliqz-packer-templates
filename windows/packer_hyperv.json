@@ -10,7 +10,8 @@
             "ram_size": 2048,
             "communicator": "winrm",
             "winrm_timeout": "12h",
-            "shutdown_command": "scripts/PackerShutdown.bat",
+            "shutdown_command": "",
+            "shutdown_timeout": "300s",
             "switch_name": "external_switch",
             "floppy_files": [
                "answer_files/Autounattend.xml",
