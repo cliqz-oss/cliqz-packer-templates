@@ -88,10 +88,8 @@
   ],
   "post-processors": [
     {
-      "type": "windows-shell",
-      "scripts": [
-        "copy-image-to-server.ps1"
-      ]
+      "type": "shell-local",
+      "script": "copy-image-to-server.ps1"
     }
   ]
 }
