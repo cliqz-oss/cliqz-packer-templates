@@ -58,11 +58,11 @@
       "scripts": [
         "../scripts/vagrant.sh",
         "../scripts/vmware.sh",
-        "../scripts/brew.sh",
         "../scripts/xcode-cli-tools.sh",
         "../scripts/packages.sh",
         "../scripts/xcode.sh",
         "../scripts/devtools-enable.sh",
+	"../scripts/brew.sh",
         "../scripts/ios-simulators.sh",
         "../scripts/sshd-config.sh",
         "../scripts/python-pip.sh",
