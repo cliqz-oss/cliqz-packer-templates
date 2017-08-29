@@ -3,7 +3,7 @@
 set -eo pipefail
 shopt -s nullglob
 
-mv /private/tmp/Xcode.zip /Applications/Xcode.zip
+wget --quiet --user=anonymous ftp://cliqznas/packermacfiles/Xcode8.3.3.xip -O /Applications/Xcode.zip
 cd /Applications
 unzip Xcode.zip
 cd 
