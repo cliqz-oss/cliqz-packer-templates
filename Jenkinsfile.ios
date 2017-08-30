@@ -1,0 +1,34 @@
+#!/bin/env groovy
+
+node('mac-vm-host') {
+    stage('checkout') {
+        git changelog: false, poll: false, url: 'https://github.com/cliqz-oss/cliqz-packer-templates', branch: 'ios2'
+    }
+
+
+    dir('ios') {
+        sh 'mkdir -p packages'
+
+        dir('packages') {
+            stage('download osx') {
+                sh '/usr/local/bin/wget --quiet --user=anonymous ftp://cliqznas/packermacfiles/OSX_InstallESD_10.11.6_15G31.dmg'
+            }
+
+            stage('download xcode') {
+                sh '/usr/local/bin/wget --quiet --user=anonymous curl ftp://cliqznas/packermacfiles/Xcode8.3.3.xip -O Xcode.zip
+            }
+        }
+
+        dir('packer') {
+            stage('verify') {
+                sh '/usr/local/bin/packer validate --var-file=variables.json template.json'
+            }
+
+            stage('build') {
+                withEnv(['PACKER_LOG=1']) {
+                    sh '/usr/local/bin/packer build --var-file=variables.json template.json'
+                }
+            }
+        }
+    }
+}
