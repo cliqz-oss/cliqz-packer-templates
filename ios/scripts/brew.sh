@@ -8,10 +8,7 @@ sudo -u vagrant -H /bin/bash --login -c \
 	'brew update'
 
 sudo -u vagrant -H /bin/bash --login -c \
-    'brew install carthage wget node nss cask'
-
-sudo -u vagrant -H /bin/bash --login -c \
-	'brew update'
+    'brew install xz wget node nss cask'
 
 sudo -u vagrant -H /bin/bash --login -c \
     'brew cask install java'
