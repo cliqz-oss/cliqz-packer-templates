@@ -3,10 +3,9 @@
 set -eo pipefail
 shopt -s nullglob
 
-curl ftp://cliqznas/packermacfiles/Xcode8.3.3.xip -o /Applications/Xcode.zip
 cd /Applications
-unzip Xcode.zip
-cd 
+unzip /private/tmp/Xcode.zip
+cd
 if [[ -d "/Applications/Xcode-Beta.app" ]]; then
     echo "Moving Xcode Beta..."
     mv "/Applications/Xcode-Beta.app" "/Applications/Xcode.app"
