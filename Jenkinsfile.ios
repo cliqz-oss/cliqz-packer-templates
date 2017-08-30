@@ -7,11 +7,19 @@ node('mac-vm-host') {
 
     dir('ios') {
         stage('download osx') {
-          sh 'wget -nc --user=anonymous ftp://cliqznas/packermacfiles/OSX_InstallESD_10.11.6_15G31.dmg || true'
+            sh 'wget -nc --user=anonymous ftp://cliqznas/packermacfiles/OSX_InstallESD_10.11.6_15G31.dmg || true'
         }
 
-        stage('download xcode') {
-          sh 'wget -nc --user=anonymous ftp://cliqznas/packermacfiles/Xcode8.3.3.xip -O Xcode.xip || true'
+        stage('download xcode ') {
+            sh 'wget -nc --user=anonymous ftp://cliqznas/packermacfiles/Xcode8.3.3.xip -O Xcode.xip || true'
+        }
+
+        stage('unpack xcode') {
+            sh '''
+                rm -rf Xcode.app
+                xar -xf Xcode.xip
+                tar zxvf Content
+            '''
         }
 
         dir('packer') {

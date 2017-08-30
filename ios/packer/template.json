@@ -49,8 +49,8 @@
       "type": "file"
     },
     {
-      "destination" : "/private/tmp/Xcode.xip",
-      "source" : "../Xcode.xip",
+      "destination" : "/Applications/Xcode.app",
+      "source" : "../Xcode.app",
       "type" : "file"
     },
     {
