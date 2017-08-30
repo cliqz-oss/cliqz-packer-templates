@@ -5,17 +5,14 @@ node('mac-vm-host') {
         git changelog: false, poll: false, url: 'https://github.com/cliqz-oss/cliqz-packer-templates', branch: 'ios2'
     }
 
-
     dir('ios') {
-        sh 'mkdir -p packages'
-
         dir('packages') {
             stage('download osx') {
                 sh '/usr/local/bin/wget --quiet --user=anonymous ftp://cliqznas/packermacfiles/OSX_InstallESD_10.11.6_15G31.dmg'
             }
 
             stage('download xcode') {
-                sh '/usr/local/bin/wget --quiet --user=anonymous curl ftp://cliqznas/packermacfiles/Xcode8.3.3.xip -O Xcode.zip
+                sh '/usr/local/bin/wget --quiet --user=anonymous curl ftp://cliqznas/packermacfiles/Xcode8.3.3.xip -O Xcode.zip'
             }
         }
 
