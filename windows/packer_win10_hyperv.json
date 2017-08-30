@@ -1,0 +1,58 @@
+{
+  "builders": [
+    {
+      "type": "hyperv-iso",
+      "iso_url": "C:/jenkins/isos/win10_1607_english_x64.iso",
+      "iso_checksum": "99fd8082a609997ae97a514dca22becf20420891",
+      "iso_checksum_type": "sha1",
+      "winrm_username": "vagrant",
+      "winrm_password": "vagrant",
+      "ram_size": 2048,
+      "communicator": "winrm",
+      "winrm_timeout": "12h",
+      "shutdown_command": "",
+      "shutdown_timeout": "300s",
+      "switch_name": "external_switch",
+      "floppy_files": [
+         "answer_files/win10/Autounattend.xml",
+         "scripts/userdata.ps1"
+      ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "powershell",
+      "scripts": [
+          "ConfigureRemotingForAnsible.ps1"
+      ]
+    },
+    {
+      "type": "powershell",
+      "inline": ["New-Item -ItemType Directory -Force -Path C:\\jenkins\\"]
+    },
+    {
+      "type" : "windows-shell",
+      "inline" : ["net stop WSearch", "REG add \"HKLM\\SYSTEM\\CurrentControlSet\\Services\\WSearch\" /v Start /t REG_DWORD /d 4 /f" ]
+    },
+    {
+      "type" : "windows-shell",
+      "inline" : ["REG ADD \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\" /v AutoDetect /t REG_DWORD /d 0 /f"]
+    },
+    {
+      "type": "powershell",
+      "execute_command": "powershell -ExecutionPolicy Bypass \"& { {{.Vars}}{{.Path}}; exit $LastExitCode}\"",
+      "scripts": [
+        "enable-rdp.ps1",
+        "disable-hibernate.ps1",
+        "disable-autologin.ps1",
+        "enable-uac.ps1",
+        "no-expiration.ps1",
+        "turn-off-windows-updates.ps1",
+        "openssh.ps1",
+        "windows-defender-exclusion.ps1",
+        "disable-geolocation.ps1",
+        "turn-off-windows-screensaver.ps1"
+      ]
+    }
+  ]
+}
