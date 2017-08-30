@@ -20,6 +20,12 @@
                     </InstallTo>
                     <WillShowUI>OnError</WillShowUI>
                     <InstallToAvailablePartition>false</InstallToAvailablePartition>
+                    <InstallFrom>
+                    <MetaData wcm:action="add">   
+                        <Key>/image/index</Key>
+                        <Value>1</Value>
+                        </MetaData>
+                    </InstallFrom>
                 </OSImage>
             </ImageInstall>
             <UserData>
