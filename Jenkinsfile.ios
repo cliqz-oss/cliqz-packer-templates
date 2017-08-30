@@ -18,6 +18,7 @@ node('mac-vm-host') {
             sh '''
                 rm -rf Xcode.app
                 xar -xf Xcode.xip
+                ls
                 tar zxvf Content
             '''
         }
