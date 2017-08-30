@@ -4,7 +4,7 @@ set -eo pipefail
 shopt -s nullglob
 
 cd /Applications
-unzip /private/tmp/Xcode.zip
+unzip /private/tmp/packages/Xcode.zip
 cd
 if [[ -d "/Applications/Xcode-Beta.app" ]]; then
     echo "Moving Xcode Beta..."
