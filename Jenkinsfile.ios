@@ -20,8 +20,7 @@ node('mac-vm-host') {
             }
 
             stage('build') {
-                sh 'rm -rf output-vmware-iso'
-                withEnv(['PACKER_LOG=1']) {
+                withEnv(['PACKER_LOG=0']) {
                     sh 'packer build --var-file=variables.json template.json'
                 }
             }
