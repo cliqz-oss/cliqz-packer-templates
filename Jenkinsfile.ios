@@ -12,7 +12,7 @@ node('mac-vm-host') {
             }
 
             stage('download xcode') {
-                sh 'wget -nc --user=anonymous curl ftp://cliqznas/packermacfiles/Xcode8.3.3.xip -O Xcode.zip'
+                sh 'wget -nc --user=anonymous ftp://cliqznas/packermacfiles/Xcode8.3.3.xip -O Xcode.zip'
             }
         }
 
