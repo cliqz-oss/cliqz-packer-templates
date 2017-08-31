@@ -79,7 +79,7 @@
 
       ],
       "environment_vars": [
-	"AUTOLOGIN={{user `autologin`}}",
+        "AUTOLOGIN={{user `autologin`}}",
         "CHEF_VERSION={{user `chef_version`}}",
         "FACTER_VERSION={{user `facter_version`}}",
         "HIERA_VERSION={{user `hiera_version`}}",
