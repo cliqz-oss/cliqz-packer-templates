@@ -1,7 +1,8 @@
-#!/bin/sh
+#!/bin/bash -l
 
 set -eo pipefail
 shopt -s nullglob
+set -x
 
 
 cd /private/tmp
