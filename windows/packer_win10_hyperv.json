@@ -15,7 +15,7 @@
       "switch_name": "external_switch",
       "floppy_files": [
          "answer_files/win10/Autounattend.xml",
-         "ConfigureRemotingForAnsible.ps1",
+         "fixnetworks.ps1",
          "scripts/userdata.ps1"
       ]
     }
