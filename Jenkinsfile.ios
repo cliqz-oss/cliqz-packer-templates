@@ -1,0 +1,29 @@
+#!/bin/env groovy
+
+node('mac-vm-host') {
+    stage('checkout') {
+        checkout scm
+    }
+
+    dir('ios') {
+        stage('download osx') {
+            sh 'wget -nc --user=anonymous ftp://cliqznas/packermacfiles/InstallSierra.dmg || true'
+        }
+
+        stage('download xcode ') {
+            sh 'wget -nc --user=anonymous ftp://cliqznas/packermacfiles/Xcode8.3.3.xip -O Xcode.xip || true'
+        }
+
+        dir('packer') {
+            stage('verify') {
+                sh 'packer validate --var-file=variables.json template.json'
+            }
+
+            stage('build') {
+                withEnv(['PACKER_LOG=0']) {
+                    sh 'packer build --var-file=variables.json template.json'
+                }
+            }
+        }
+    }
+}

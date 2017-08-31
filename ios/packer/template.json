@@ -49,9 +49,9 @@
       "type": "file"
     },
     {
-	"destination" : "/private/tmp/Xcode.zip",
-	"source" : "../Xcode.zip",
-	"type" : "file"
+      "destination" : "/private/tmp/Xcode.xip",
+      "source" : "../Xcode.xip",
+      "type" : "file"
     },
     {
       "destination": "/private/tmp/set_kcpassword.py",
@@ -65,10 +65,10 @@
         "../scripts/vmware.sh",
         "../scripts/xcode-cli-tools.sh",
         "../scripts/packages.sh",
+        "../scripts/brew.sh",
         "../scripts/xcode.sh",
         "../scripts/devtools-enable.sh",
         "../scripts/ios-simulators.sh",
-        "../scripts/brew.sh",
         "../scripts/sshd-config.sh",
         "../scripts/python-pip.sh",
         "../scripts/bootstrap.sh",
@@ -79,7 +79,7 @@
 
       ],
       "environment_vars": [
-	"AUTOLOGIN={{user `autologin`}}",
+        "AUTOLOGIN={{user `autologin`}}",
         "CHEF_VERSION={{user `chef_version`}}",
         "FACTER_VERSION={{user `facter_version`}}",
         "HIERA_VERSION={{user `hiera_version`}}",

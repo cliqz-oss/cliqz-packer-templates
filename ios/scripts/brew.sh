@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -eo pipefail
+set -x
 
 : | sudo -u vagrant -H ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -8,10 +9,7 @@ sudo -u vagrant -H /bin/bash --login -c \
 	'brew update'
 
 sudo -u vagrant -H /bin/bash --login -c \
-    'brew install carthage wget node nss cask'
-
-sudo -u vagrant -H /bin/bash --login -c \
-	'brew update'
+    'brew install xz wget node nss cask'
 
 sudo -u vagrant -H /bin/bash --login -c \
     'brew cask install java'
