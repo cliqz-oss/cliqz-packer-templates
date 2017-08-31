@@ -15,7 +15,7 @@
       "switch_name": "external_switch",
       "floppy_files": [
          "answer_files/win10/Autounattend.xml",
-         "fixnetworks.ps1",
+         "fixnetwork.ps1",
          "scripts/userdata.ps1"
       ]
     }
