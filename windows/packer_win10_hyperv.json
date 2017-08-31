@@ -2,8 +2,8 @@
   "builders": [
     {
       "type": "hyperv-iso",
-      "iso_url": "C:/jenkins/isos/win10_1607_english_x64.iso",
-      "iso_checksum": "99fd8082a609997ae97a514dca22becf20420891",
+      "iso_url": "C:/jenkins/isos/win10_15063_english_x64.iso",
+      "iso_checksum": "6c60f91bf0ad7b20f469ab8f80863035c517f34f",
       "iso_checksum_type": "sha1",
       "winrm_username": "vagrant",
       "winrm_password": "vagrant",
