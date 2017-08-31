@@ -3,12 +3,13 @@
 write-output "Running user data script"
 write-host "(host) Running user data script"
 
-cmd.exe /c net user /add vagrant Cliqz@666
+cmd.exe /c net user /add vagrant vagrant
 cmd.exec /c net localgroup administrators vagrant /add
 
 Set-ExecutionPolicy -ExecutionPolicy bypass -Force
 
 cmd.exe /c netsh advfirewall firewall add rule name="Open Port 3389" dir=in action=allow protocol=TCP localport=3389
+cmd.exe /c netsh advfirewall firewall add rule name="Open Port 5985" dir=in action=allow protocol=TCP localport=5985
 cmd.exe /c reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
 
 # WinRM
