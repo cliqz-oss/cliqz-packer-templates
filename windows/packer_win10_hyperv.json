@@ -7,7 +7,7 @@
       "iso_checksum_type": "sha1",
       "winrm_username": "vagrant",
       "winrm_password": "vagrant",
-      "ram_size": 2048,
+      "ram_size": 4096,
       "communicator": "winrm",
       "winrm_timeout": "12h",
       "shutdown_command": "",
