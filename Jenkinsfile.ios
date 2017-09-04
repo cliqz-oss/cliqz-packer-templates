@@ -7,7 +7,6 @@ node('mac-vm-host') {
 
     dir('ios') {
         stage('download osx') {
-            sh 'rm -rf OSX_InstallESD_10.12.6_16G29.dmg'
             sh 'wget -nc --user=anonymous ftp://cliqznas/packermacfiles/OSX_InstallESD_10.12.6_16G29.dmg || true'
         }
 
