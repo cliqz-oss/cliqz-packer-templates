@@ -9,6 +9,7 @@
       "iso_checksum" : "{{user `iso_checksum`}}",
       "shutdown_command": "echo '{{user `username`}}'|sudo -S shutdown -h now",
       "skip_compaction": false,
+      "communicator": "ssh",
       "ssh_port": 22,
       "ssh_username": "{{user `username`}}",
       "ssh_password": "{{user `password`}}",
