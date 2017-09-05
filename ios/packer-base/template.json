@@ -64,21 +64,7 @@
       "scripts": [
         "../scripts/vagrant.sh",
         "../scripts/vmware.sh",
-        "../scripts/update-osx.sh",
-        "../scripts/xcode-cli-tools.sh",
-        "../scripts/packages.sh",
-        "../scripts/brew.sh",
-        "../scripts/xcode.sh",
-        "../scripts/devtools-enable.sh",
-        "../scripts/ios-simulators.sh",
-        "../scripts/sshd-config.sh",
-        "../scripts/python-pip.sh",
-        "../scripts/bootstrap.sh",
-        "../scripts/add-network-interface-detection.sh",
-        "../scripts/autologin.sh",
-        "../scripts/system-update.sh",
-        "../scripts/create-dirs.sh"
-
+        "../scripts/update-osx.sh"
       ],
       "environment_vars": [
         "AUTOLOGIN={{user `autologin`}}",
