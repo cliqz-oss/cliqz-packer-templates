@@ -85,12 +85,6 @@
        "type" : "windows-shell",
        "inline": "cd c:\\mozilla-build\\python & python -m pip install compare-locales"
     }
-  ],
-  "post-processors": [
-    {
-      "type": "shell-local",
-      "script": "copy-image-to-server.ps1"
-    }
   ]
 }
 
