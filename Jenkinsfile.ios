@@ -7,7 +7,7 @@ node('mac-vm-host') {
 
     dir('ios') {
         stage('download osx') {
-            sh 'wget -nc -nv --user=anonymous ftp://cliqznas/packermacfiles/macOS_InstallESD_10.12.6_16G29_20170913142813.dmg || true'
+            sh 'wget -nc -nv --user=anonymous ftp://cliqznas/packermacfiles/Sierra.iso || true'
         }
 
         stage('download xcode ') {
