@@ -17,6 +17,7 @@
       "tools_upload_flavor": "darwin",
       "type": "vmware-iso",
       "headless": true,
+      "vnc_bind_address": "0.0.0.0",
       "vmx_data": {
         "cpuid.coresPerSocket": "1",
         "memsize": "3072",
