@@ -57,7 +57,12 @@
     {
       "execute_command": "chmod +x {{ .Path }}; sudo {{ .Vars }} {{ .Path }}",
       "scripts": [
-        "../scripts/brew.sh",
+        "../scripts/brew.sh"
+    },
+
+    {
+      "execute_command": "chmod +x {{ .Path }}; sudo {{ .Vars }} {{ .Path }}",
+      "scripts": [
         "../scripts/vagrant.sh",
         "../scripts/vmware.sh",
         "../scripts/xcode.sh",
