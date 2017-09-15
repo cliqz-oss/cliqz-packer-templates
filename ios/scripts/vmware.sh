@@ -29,4 +29,5 @@ if [ -e .vmfusion_version ] || [[ "$PACKER_BUILDER_TYPE" == vmware* ]]; then
     # useful for the Hashicorp vmware_fusion Vagrant provider plugin
     mkdir /mnt
     ln -sf /Volumes/VMware\ Shared\ Folders /mnt/hgfs
+    reboot
 fi

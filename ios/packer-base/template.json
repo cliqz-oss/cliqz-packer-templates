@@ -56,13 +56,14 @@
     {
       "execute_command": "chmod +x {{ .Path }}; sudo {{ .Vars }} {{ .Path }}",
       "scripts": [
+        "../scripts/brew.sh",
         "../scripts/vagrant.sh",
         "../scripts/vmware.sh",
         "../scripts/update-osx.sh",
         "../scripts/xcode.sh",
         "../scripts/xcode-cli-tools.sh"
-
       ],
+      expect_disconnect: true,
       "environment_vars": [
         "AUTOLOGIN={{user `autologin`}}",
         "CHEF_VERSION={{user `chef_version`}}",
