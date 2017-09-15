@@ -60,7 +60,7 @@
         "../scripts/vmware.sh",
         "../scripts/update-osx.sh",
         "../scripts/xcode.sh",
-        "../scripts/xcode-clii-tools.sh"
+        "../scripts/xcode-cli-tools.sh"
 
       ],
       "environment_vars": [
