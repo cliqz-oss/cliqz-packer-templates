@@ -33,13 +33,6 @@
     }
   ],
   "min_packer_version": "0.7.0",
-  "post-processors": [
-     {
-      "type": "vagrant",
-      "keep_input_artifact": false,
-      "output": "browser-f|ios10.11.4|{{user `version`}}.box"
-     }
-  ],
   "provisioners": [
     {
       "type": "shell-local",
@@ -65,7 +58,10 @@
       "scripts": [
         "../scripts/vagrant.sh",
         "../scripts/vmware.sh",
-        "../scripts/update-osx.sh"
+        "../scripts/update-osx.sh",
+        "../scripts/xcode.sh",
+        "../scripts/xcode-clii-tools.sh"
+
       ],
       "environment_vars": [
         "AUTOLOGIN={{user `autologin`}}",

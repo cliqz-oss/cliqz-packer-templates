@@ -19,5 +19,5 @@ if [ "$INSTALL_VAGRANT_KEYS" = "true" ] || [ "$INSTALL_VAGRANT_KEYS" = "1" ]; th
 fi
 
 # Create a group and assign the user to it
-dseditgroup -o create -u "$USERNAME" -P "$PASSWORD" "$USERNAME"
-dseditgroup -o edit -u "$USERNAME" -P "$PASSWORD" -a "$USERNAME" "$USERNAME"
+#dseditgroup -o create -u "$USERNAME" -P "$PASSWORD" "$USERNAME"
+#dseditgroup -o edit -u "$USERNAME" -P "$PASSWORD" -a "$USERNAME" "$USERNAME"
