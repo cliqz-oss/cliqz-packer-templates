@@ -40,21 +40,22 @@
       "command": "sleep {{user `provisioning_delay`}}"
     },
     {
+      "type": "file",
       "destination": "/private/tmp/packages",
-      "source": "../packages",
-      "type": "file"
+      "source": "../packages"
     },
     {
+      "type" : "file",
       "destination" : "/private/tmp/Xcode.xip",
-      "source" : "../Xcode.xip",
-      "type" : "file"
+      "source" : "../Xcode.xip"
     },
     {
+      "type": "file", 
       "destination": "/private/tmp/set_kcpassword.py",
-      "source": "../scripts/support/set_kcpassword.py",
-      "type": "file"
+      "source": "../scripts/support/set_kcpassword.py"
     },
     {
+      "type": "shell",
       "execute_command": "chmod +x {{ .Path }}; sudo {{ .Vars }} {{ .Path }}",
       "scripts": [
         "../scripts/brew.sh"
@@ -62,6 +63,7 @@
     },
 
     {
+      "type": "shell",
       "execute_command": "chmod +x {{ .Path }}; sudo {{ .Vars }} {{ .Path }}",
       "scripts": [
         "../scripts/vagrant.sh",
@@ -82,8 +84,7 @@
         "PUPPET_VERSION={{user `puppet_version`}}",
         "UPDATE_SYSTEM={{user `update_system`}}",
         "USERNAME={{user `username`}}"
-      ],
-      "type": "shell"
+      ]
     }
   ],
   "variables": {
