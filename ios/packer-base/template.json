@@ -15,7 +15,7 @@
       "ssh_password": "{{user `password`}}",
       "ssh_wait_timeout": "10000s",
       "tools_upload_flavor": "darwin",
-      "tools_upload_path": "/Users/{{ user `username`}}/{{ .Flavor }}",
+      "tools_upload_path": "/Users/{{ user `username`}}/{{ .Flavor }}.iso",
       "type": "vmware-iso",
       "headless": true,
       "vnc_bind_address": "0.0.0.0",
