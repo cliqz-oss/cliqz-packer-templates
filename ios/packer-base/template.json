@@ -58,6 +58,7 @@
       "execute_command": "chmod +x {{ .Path }}; sudo {{ .Vars }} {{ .Path }}",
       "scripts": [
         "../scripts/brew.sh"
+      ]
     },
 
     {
