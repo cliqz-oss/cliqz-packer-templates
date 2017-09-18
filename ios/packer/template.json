@@ -2,8 +2,6 @@
   "builders": [
     {
       "boot_wait": "2s",
-      "disk_size": 52400,
-      "guest_os_type": "darwin12-64",
       "source_path": "{{ user `source_path`}}",
       "shutdown_command": "echo '{{user `username`}}'|sudo -S shutdown -h now",
       "skip_compaction": false,
