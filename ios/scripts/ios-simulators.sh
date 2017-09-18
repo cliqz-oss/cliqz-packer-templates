@@ -4,7 +4,7 @@ set -eo pipefail
 shopt -s nullglob
 
 list_all_simulators() {
-    xcrun simctl list devices | grep -v '^[-=]' | cut -d "(" -f2 | cut -d ")" -f1
+    xcrun simctl list devices | grep -v 'generation' | grep -v inch | grep -v '^[-=]' | cut -d "(" -f2 | cut -d ")" -f1
 }
 
 echo Creating simulators...
