@@ -58,18 +58,8 @@
       "type": "shell",
       "execute_command": "chmod +x {{ .Path }}; sudo {{ .Vars }} {{ .Path }}",
       "scripts": [
-        "../scripts/brew.sh"
-      ]
-    },
-
-    {
-      "type": "shell",
-      "execute_command": "chmod +x {{ .Path }}; sudo {{ .Vars }} {{ .Path }}",
-      "scripts": [
         "../scripts/vagrant.sh",
-        "../scripts/vmware.sh",
-        "../scripts/xcode.sh",
-        "../scripts/xcode-cli-tools.sh"
+        "../scripts/vmware.sh"
       ],
       "expect_disconnect": true,
       "environment_vars": [
