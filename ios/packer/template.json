@@ -66,8 +66,6 @@
         "../scripts/ios-simulators.sh",
         "../scripts/sshd-config.sh",
         "../scripts/python-pip.sh",
-        "../scripts/bootstrap.sh",
-        "../scripts/add-network-interface-detection.sh",
         "../scripts/autologin.sh",
         "../scripts/system-update.sh",
         "../scripts/create-dirs.sh"
@@ -82,7 +80,6 @@
         "NOCM={{user `nocm`}}",
         "INSTALL_XCODE_CLI_TOOLS={{user `install_xcode_cli_tools`}}",
         "PASSWORD={{user `password`}}",
-        "PUPPET_VERSION={{user `puppet_version`}}",
         "UPDATE_SYSTEM={{user `update_system`}}",
         "USERNAME={{user `username`}}"
       ],
