@@ -58,10 +58,10 @@
     {
       "execute_command": "chmod +x {{ .Path }}; sudo {{ .Vars }} {{ .Path }}",
       "scripts": [
+        "../scripts/brew.sh",
         "../scripts/rvm.sh",
         "../scripts/xcode-cli-tools.sh",
         "../scripts/packages.sh",
-        "../scripts/brew.sh",
         "../scripts/xcode.sh",
         "../scripts/devtools-enable.sh",
         "../scripts/ios-simulators.sh",
