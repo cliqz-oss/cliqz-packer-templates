@@ -1,5 +1,17 @@
 #!/bin/env groovy
 
+properties([
+    [$class: 'JobRestrictionProperty'],
+    disableConcurrentBuilds(),
+    parameters([
+        string(name: 'SOURCE_PATH'),
+    ]),
+])
+
+
+
+
+
 node('mac-vm-host') {
     stage('checkout') {
         checkout scm
@@ -14,14 +26,10 @@ node('mac-vm-host') {
             sh 'wget -nc -nv --user=anonymous ftp://cliqznas/packermacfiles/Xcode8.3.3.xip -O Xcode.xip || true'
         }
 
-        dir('packer-base') {
-            stage('verify') {
-                sh 'packer validate --var-file=variables.json template.json'
-            }
-
+        dir('packer') {
             stage('build') {
-                withEnv(['PACKER_LOG=0']) {
-                    sh 'packer build --var-file=variables.json template.json'
+                withEnv(['PACKER_LOG=1']) {
+                    sh 'packer build -on-error=ask -var-file variables.json -var "source_path=${params.SOURCE_PATH}" template.json'
                 }
             }
         }
