@@ -27,7 +27,10 @@ if [ -e .vmfusion_version ] || [[ "$PACKER_BUILDER_TYPE" == vmware* ]]; then
 
     # Point Linux shared folder root to that used by OS X guests,
     # useful for the Hashicorp vmware_fusion Vagrant provider plugin
-    mkdir /mnt
+    if [ ! -d /mnt ]; then
+        mkdir /mnt
+    fi
+    
     ln -sf /Volumes/VMware\ Shared\ Folders /mnt/hgfs
     reboot
 fi
