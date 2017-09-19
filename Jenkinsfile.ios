@@ -26,7 +26,7 @@ node('mac-vm-host') {
         dir('packer') {
             stage('build') {
                 withEnv(['PACKER_LOG=1']) {
-                    sh 'packer build -on-error=ask -var-file variables.json -var source_path=${params.SOURCE_PATH} template.json'
+                    sh "packer build -on-error=ask -var-file variables.json -var source_path=${params.SOURCE_PATH} template.json"
                 }
             }
         }
