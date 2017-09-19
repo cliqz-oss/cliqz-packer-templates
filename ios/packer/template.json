@@ -58,13 +58,13 @@
     {
       "execute_command": "chmod +x {{ .Path }}; sudo {{ .Vars }} {{ .Path }}",
       "scripts": [
+        "../scripts/rvm.sh",
         "../scripts/xcode-cli-tools.sh",
         "../scripts/packages.sh",
         "../scripts/brew.sh",
         "../scripts/xcode.sh",
         "../scripts/devtools-enable.sh",
         "../scripts/ios-simulators.sh",
-        "../scripts/rvm.sh",
         "../scripts/npm.sh",
         "../scripts/sshd-config.sh",
         "../scripts/python-pip.sh",
@@ -102,7 +102,7 @@
     "puppet_version": "none",
     "update_system": "true",
     "username": "vagrant",
-    "ruby_version": "2.4.1",
+    "ruby_version": "ruby-2.4.1",
     "version" : "{{env `BUILD_NUMBER`}}"
   }
 }
