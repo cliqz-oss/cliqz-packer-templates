@@ -1,16 +1,13 @@
 #!/bin/env groovy
 
 properties([
-    [$class: 'JobRestrictionProperty'],
+    [$class: 'JobRestrictionProperty'], 
     disableConcurrentBuilds(),
     parameters([
-        string(name: 'SOURCE_PATH', description="Path to vmx file"),
-    ]),
+        string(defaultValue: '', description: 'Path to vmx file', name: 'SOURCE_PATH')
+    ]), 
+    pipelineTriggers([])
 ])
-
-
-
-
 
 node('mac-vm-host') {
     stage('checkout') {
