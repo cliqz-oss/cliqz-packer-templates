@@ -2,7 +2,7 @@
 
 sudo -u vagrant -H /bin/bash --login -c 'echo "gem: --no-document" >> ~/.gemrc'
 sudo -u vagrant -H /bin/bash --login -c 'curl -L https://get.rvm.io | bash -s stable --auto-dotfiles --autolibs=enable'
-sudo -u vagrant -H /bin/bash --logic -c ' \
+sudo -u vagrant -H /bin/bash --login -c ' \
 	rvm install ${RUBY_VERSION} && \
 	rvm use ${RUBY_VERSION} 	&& \
 	gem install xcpretty -N 	&& \
