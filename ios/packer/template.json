@@ -102,6 +102,7 @@
     "puppet_version": "none",
     "update_system": "true",
     "username": "vagrant",
+    "ruby_version": "2.4.1",
     "version" : "{{env `BUILD_NUMBER`}}"
   }
 }
