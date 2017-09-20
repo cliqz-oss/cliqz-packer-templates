@@ -5,5 +5,5 @@ set -e
 
 sudo -u vagrant -H /bin/bash --login -c ' \
 	npm install -g yarn && \
-	npm instal -g appium && \
+	npm install -g appium && \
 	npm install -g wd'
