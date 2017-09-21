@@ -50,7 +50,7 @@
         "no-expiration.ps1",
         "turn-off-windows-updates.ps1",
         "openssh.ps1",
-        "windows-defender-exclusion.ps1",
+        "defender-and-index-exclusion.ps1",
         "disable-geolocation.ps1",
         "turn-off-windows-screensaver.ps1"
       ]
