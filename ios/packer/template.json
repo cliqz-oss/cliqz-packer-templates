@@ -13,6 +13,7 @@
       "tools_upload_flavor": "darwin",
       "type": "vmware-vmx",
       "headless": true,
+      "output_directory": "{{ user `output_directory` }}",
       "vmx_data": {
         "cpuid.coresPerSocket": "1",
         "memsize": "3072",
