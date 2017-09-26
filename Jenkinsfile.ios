@@ -4,7 +4,8 @@ properties([
     [$class: 'JobRestrictionProperty'], 
     disableConcurrentBuilds(),
     parameters([
-        string(defaultValue: '', description: 'Path to vmx file', name: 'SOURCE_PATH')
+        string(defaultValue: '', description: 'Path to vmx file', name: 'SOURCE_PATH'),
+        string(defaultValue: '', description: 'Path to output directory', name: 'OUTPUT_DIRECTORY')
     ]), 
     pipelineTriggers([])
 ])
@@ -23,7 +24,7 @@ node('mac-vm-host') {
             dir('packer') {
                 stage('build') {
                     withEnv(['PACKER_LOG=1']) {
-                        sh "/Users/jenkins/jenkins/packer build -var-file variables.json -var source_path=${params.SOURCE_PATH} template.json"
+                        sh "/Users/jenkins/jenkins/packer build -var-file variables.json -var source_path=${params.SOURCE_PATH} -var output_directory=${params.OUTPUT_DIRECTORY} template.json"
                     }
                 }
             }
