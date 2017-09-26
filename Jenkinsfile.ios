@@ -23,7 +23,9 @@ node('mac-vm-host') {
 
             dir('packer') {
                 stage('build') {
-                    withEnv(['PACKER_LOG=1']) {
+                    withEnv(['PACKER_LOG=1',
+                            "PACKER_CACHE_DIR=${params.OUTPUT_DIRECTORY}"
+                        ]) {
                         sh "/Users/jenkins/jenkins/packer build -var-file variables.json -var source_path=${params.SOURCE_PATH} -var output_directory=${params.OUTPUT_DIRECTORY} template.json"
                     }
                 }
