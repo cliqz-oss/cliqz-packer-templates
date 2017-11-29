@@ -32,4 +32,7 @@ node('mac-vm-host') {
             }
         }
     }
+    stage ('copy box to repository'){
+        sh "/usr/local/bin/vagrant box add browser-ios-v${env.BUILD_ID} /srv/jenkins/ios/output/browser-f-ios10.12.6-${env.BUILD_ID}.box"
+    }
 }
