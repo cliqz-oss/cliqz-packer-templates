@@ -63,7 +63,6 @@
         "../scripts/rvm.sh",
         "../scripts/xcode-cli-tools.sh",
         "../scripts/packages.sh",
-        "../scripts/brew.sh",
         "../scripts/xcode.sh",
         "../scripts/devtools-enable.sh",
         "../scripts/ios-simulators.sh",
