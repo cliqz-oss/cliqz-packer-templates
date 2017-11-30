@@ -66,6 +66,7 @@
         "../scripts/xcode.sh",
         "../scripts/devtools-enable.sh",
         "../scripts/ios-simulators.sh",
+        "../scripts/npm.sh",
         "../scripts/sshd-config.sh",
         "../scripts/python-pip.sh",
         "../scripts/autologin.sh",
