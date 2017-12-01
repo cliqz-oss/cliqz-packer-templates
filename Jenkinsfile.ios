@@ -29,10 +29,10 @@ node('mac-vm-host') {
                         sh "/Users/jenkins/jenkins/packer build -var-file variables.json -var source_path=${params.SOURCE_PATH} -var output_directory=${params.OUTPUT_DIRECTORY} template.json"
                     }
                 }
+                stage ('copy box to repository'){
+                    sh "/usr/local/bin/vagrant box add browser-ios-v${env.BUILD_ID} browser-f-ios10.12.6-${env.BUILD_ID}.box"
+                }
             }
         }
-    }
-    stage ('copy box to repository'){
-        sh "/usr/local/bin/vagrant box add browser-ios-v${env.BUILD_ID} /srv/jenkins/ios/output/browser-f-ios10.12.6-${env.BUILD_ID}.box"
     }
 }
