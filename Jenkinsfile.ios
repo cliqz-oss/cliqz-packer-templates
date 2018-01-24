@@ -18,7 +18,12 @@ node('mac-vm-host') {
     dir('ios') {
         ansiColor('xterm') {
             stage('download xcode ') {
-                sh 'wget -nc -nv --user=anonymous ftp://cliqznas/packermacfiles/Xcode8.3.3.xip -O Xcode.xip || true'
+                sh 'wget -nc -nv --user=anonymous ftp://cliqznas/packermacfiles/Xcode_9.0.1.xip -O Xcode.xip || true'
+
+                and commandline tools 
+            }
+            stage('download commandline tools ') {
+                sh 'wget -nc -nv --user=anonymous ftp://cliqznas/packermacfiles/Command_Line_Tools_macOS_10.12_for_Xcode_9.0.1.dmg -O /private/tmp/packages/CommandLineTools.dmg || true'
             }
 
             dir('packer') {
