@@ -59,10 +59,9 @@
     {
       "execute_command": "chmod +x {{ .Path }}; sudo {{ .Vars }} {{ .Path }}",
       "scripts": [
+        "../scripts/packages.sh",
         "../scripts/brew.sh",
         "../scripts/rvm.sh",
-        "../scripts/xcode-cli-tools.sh",
-        "../scripts/packages.sh",
         "../scripts/xcode.sh",
         "../scripts/devtools-enable.sh",
         "../scripts/ios-simulators.sh",
@@ -96,7 +95,7 @@
     "facter_version": "none",
     "hiera_version": "none",
     "install_vagrant_keys": "true",
-    "install_xcode_cli_tools": "true",
+    "install_xcode_cli_tools": "false",
     "iso_url": "{{user `iso_url`}}",
     "password": "vagrant",
     "provisioning_delay": "0",

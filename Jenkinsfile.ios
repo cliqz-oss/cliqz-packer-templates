@@ -29,11 +29,11 @@ node('mac-vm-host') {
                 '''
             }
             stage('Download packer output'){
-                sh '''
-                    cd packer-base
-                    wget -r --user=anonymous ftp://cliqznas/packer_output || true
-                    mv -v cliqznas/* /Users/jenkins/jenkins/workspace/browser-ios/vm-image-for-ios/ios/packer-base
-                '''
+                // sh '''
+                //     cd packer-base
+                //     wget -r --user=anonymous ftp://cliqznas/packer_output || true
+                //     mv -v cliqznas/* /Users/jenkins/jenkins/workspace/browser-ios/vm-image-for-ios/ios/packer-base
+                // '''
             }
 
             dir('packer') {
