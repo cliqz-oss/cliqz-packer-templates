@@ -37,4 +37,3 @@
 #     rm "$TOOLS"
 #     exit
 # fi
-sh packages.sh
