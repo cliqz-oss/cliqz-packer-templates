@@ -1,6 +1,6 @@
 #!/bin/bash -l
 
-set -eo pipefail
+set -o pipefail
 shopt -s nullglob
 set -x
 
