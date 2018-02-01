@@ -1,17 +1,14 @@
 #!/bin/bash -l
 
-set -o pipefail
+set -eo pipefail
 shopt -s nullglob
 set -x
 
-
 cd /private/tmp
-curl -O https://gist.githubusercontent.com/pudquick/ff412bcb29c9c1fa4b8d/raw/24b25538ea8df8d0634a2a6189aa581ccc6a5b4b/parse_pbzx2.py
-xar -xf Xcode.xip
-python parse_pbzx2.py Content
-xz -d Content.part00.cpio.xz
-sudo cpio -idm < ./Content.part00.cpio
-mv Xcode.app /Applications/Xcode.app
+sudo ls -lha
+chmod +x Xcode.xip
+sudo open -Wa "Archive Utility" Xcode.xip
+sudo mv Xcode.app /Applications/Xcode.app
 cd
 
 if [[ -d "/Applications/Xcode-Beta.app" ]]; then
@@ -21,7 +18,10 @@ fi
 
 [[ ! -d "/Applications/Xcode.app" ]] && exit
 
-xcode-select -switch /Applications/Xcode.app/Contents/Developer
+xcode-select -p
+sudo xcode-select --print-path
+sudo xcode-select -switch /Applications/Xcode.app
+sudo xcode-select -p
 # accept Xcode license
 xcodebuild -license accept
 

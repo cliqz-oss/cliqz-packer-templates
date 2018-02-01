@@ -12,7 +12,8 @@
       "ssh_wait_timeout": "10000s",
       "tools_upload_flavor": "darwin",
       "type": "vmware-vmx",
-      "headless": true,
+      "headless": false,
+      "vnc_bind_address": "0.0.0.0",
       "output_directory": "{{ user `output_directory` }}",
       "vmx_data": {
         "cpuid.coresPerSocket": "1",
@@ -32,7 +33,7 @@
   "post-processors": [
      {
       "type": "vagrant",
-      "keep_input_artifact": false,
+      "keep_input_artifact": true,
       "output": "{{user `output-directory`}}browser-f-ios10.12.6-{{user `version`}}.box"
      }
   ],
@@ -90,12 +91,12 @@
   ],
   "variables": {
     "vm_name": "osx-xcode-7.3",
-    "autologin": "false",
+    "autologin": "true",
     "chef_version": "none",
     "facter_version": "none",
     "hiera_version": "none",
     "install_vagrant_keys": "true",
-    "install_xcode_cli_tools": "false",
+    "install_xcode_cli_tools": "true",
     "iso_url": "{{user `iso_url`}}",
     "password": "vagrant",
     "provisioning_delay": "0",
