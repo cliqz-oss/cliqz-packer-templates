@@ -12,8 +12,7 @@
       "ssh_wait_timeout": "10000s",
       "tools_upload_flavor": "darwin",
       "type": "vmware-vmx",
-      "headless": false,
-      "vnc_bind_address": "0.0.0.0",
+      "headless": true,
       "output_directory": "{{ user `output_directory` }}",
       "vmx_data": {
         "cpuid.coresPerSocket": "1",
@@ -33,7 +32,7 @@
   "post-processors": [
      {
       "type": "vagrant",
-      "keep_input_artifact": true,
+      "keep_input_artifact": false,
       "output": "{{user `output-directory`}}browser-f-ios10.12.6-{{user `version`}}.box"
      }
   ],
@@ -48,8 +47,8 @@
       "type": "file"
     },
     {
-      "destination" : "/private/tmp/Xcode.xip",
-      "source" : "../Xcode.xip",
+      "destination" : "/private/tmp/Xcode.tar.gz",
+      "source" : "../Xcode.tar.gz",
       "type" : "file"
     },
     {
@@ -91,7 +90,7 @@
   ],
   "variables": {
     "vm_name": "osx-xcode-7.3",
-    "autologin": "true",
+    "autologin": "false",
     "chef_version": "none",
     "facter_version": "none",
     "hiera_version": "none",

@@ -19,8 +19,9 @@ node('mac-vm-host') {
         ansiColor('xterm') {
             stage('download xcode ') {
                 sh '''
-                    wget -nc -nv --user=anonymous ftp://cliqznas/packermacfiles/Xcode_9.0.1.xip -O Xcode.xip || true
+                    wget -nc -nv --user=anonymous ftp://cliqznas/packermacfiles/Xcode.tar.gz -O Xcode.tar.gz || true
                 '''
+                    // wget -r -m -np -nv --user=anonymous ftp://cliqznas/packermacfiles/Xcode.app || true
             }
             stage('download commandline tools ') {
                 sh '''

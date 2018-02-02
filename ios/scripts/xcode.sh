@@ -5,9 +5,7 @@ shopt -s nullglob
 set -x
 
 cd /private/tmp
-sudo ls -lha
-chmod +x Xcode.xip
-sudo open -Wa "Archive Utility" Xcode.xip
+tar -xzf Xcode.tar.gz >(squish > foo.tar.S) ./foo > foo.out 2>foo.err
 sudo mv Xcode.app /Applications/Xcode.app
 cd
 
