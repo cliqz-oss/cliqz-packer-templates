@@ -5,7 +5,7 @@ shopt -s nullglob
 set -x
 
 cd /private/tmp
-tar -xzf Xcode.tar.gz >(squish > foo.tar.S) ./foo > foo.out 2>foo.err
+pv -teb Xcode.tar.gz | tar xzf - -C . 
 sudo mv Xcode.app /Applications/Xcode.app
 cd
 
