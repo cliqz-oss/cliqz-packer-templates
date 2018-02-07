@@ -5,7 +5,13 @@ shopt -s nullglob
 set -x
 
 cd /private/tmp
-pv -teb Xcode.tar.gz | tar xzf - -C . 
+# APP=/System/Library/CoreServices/Applications/Archive\ Utility.app/Contents/MacOS/Archive\ Utility
+ls -l
+if [[ -e "Xcode.xip"]]; then echo "Xcode.xip file exists" fi
+chmod 777 Xcode.xip
+xattr Xcode.xip
+chmod +x $/System/Library/CoreServices/Applications/Archive\ Utility.app/Contents/MacOS/Archive\ Utility
+sudo pv | open -j -g -Wa "Archive Utility" Xcode.xip
 sudo mv Xcode.app /Applications/Xcode.app
 cd
 

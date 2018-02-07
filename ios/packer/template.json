@@ -6,13 +6,14 @@
       "shutdown_command": "echo '{{user `username`}}'|sudo -S shutdown -h now",
       "skip_compaction": false,
       "communicator": "ssh",
+      "ssh_file_transfer_method":"sftp",
       "ssh_port": 22,
       "ssh_username": "{{user `username`}}",
       "ssh_password": "{{user `password`}}",
       "ssh_wait_timeout": "10000s",
       "tools_upload_flavor": "darwin",
       "type": "vmware-vmx",
-      "headless": true,
+      "headless": false,
       "output_directory": "{{ user `output_directory` }}",
       "vmx_data": {
         "cpuid.coresPerSocket": "1",
@@ -42,13 +43,13 @@
       "command": "sleep {{user `provisioning_delay`}}"
     },
     {
-      "destination": "/private/tmp/packages",
-      "source": "../packages",
+      "destination": "/private/tmp/packages/",
+      "source": "../packages/",
       "type": "file"
     },
     {
-      "destination" : "/private/tmp/Xcode.tar.gz",
-      "source" : "../Xcode.tar.gz",
+      "destination" : "/private/tmp/Xcode.xip",
+      "source" : "../Xcode.xip",
       "type" : "file"
     },
     {

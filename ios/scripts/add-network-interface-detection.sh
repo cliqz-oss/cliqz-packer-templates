@@ -24,5 +24,5 @@ EOF
 
 # These should be already set as follows, but since they're required
 # in order to load properly, we set them explicitly.
-/bin/chmod 644 "${PLIST}"
+# /bin/chmod 644 "${PLIST}"
 /usr/sbin/chown root:wheel "${PLIST}"
