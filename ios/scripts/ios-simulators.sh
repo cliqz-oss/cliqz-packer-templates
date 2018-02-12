@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eo pipefail
+set -o pipefail
 shopt -s nullglob
 
 list_all_simulators() {

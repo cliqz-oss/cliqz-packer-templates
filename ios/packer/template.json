@@ -13,7 +13,7 @@
       "ssh_wait_timeout": "10000s",
       "tools_upload_flavor": "darwin",
       "type": "vmware-vmx",
-      "headless": false,
+      "headless": true,
       "output_directory": "{{ user `output_directory` }}",
       "vmx_data": {
         "cpuid.coresPerSocket": "1",
@@ -48,11 +48,6 @@
       "type": "file"
     },
     {
-      "destination" : "/private/tmp/Xcode.xip",
-      "source" : "../Xcode.xip",
-      "type" : "file"
-    },
-    {
       "destination": "/private/tmp/set_kcpassword.py",
       "source": "../scripts/support/set_kcpassword.py",
       "type": "file"
@@ -65,7 +60,6 @@
         "../scripts/rvm.sh",
         "../scripts/xcode.sh",
         "../scripts/devtools-enable.sh",
-        "../scripts/ios-simulators.sh",
         "../scripts/npm.sh",
         "../scripts/sshd-config.sh",
         "../scripts/python-pip.sh",

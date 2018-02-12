@@ -5,19 +5,10 @@ shopt -s nullglob
 set -x
 
 cd /private/tmp
-# APP=/System/Library/CoreServices/Applications/Archive\ Utility.app/Contents/MacOS/Archive\ Utility
-ls -l
-if [[ -e "Xcode.xip"]]; then echo "Xcode.xip file exists" fi
-chmod 777 Xcode.xip
-xattr Xcode.xip
-chmod +x $/System/Library/CoreServices/Applications/Archive\ Utility.app/Contents/MacOS/Archive\ Utility
-sudo pv | open -j -g -Wa "Archive Utility" Xcode.xip
-sudo mv Xcode.app /Applications/Xcode.app
 cd
 
-if [[ -d "/Applications/Xcode-Beta.app" ]]; then
-    echo "Moving Xcode Beta..."
-    mv "/Applications/Xcode-Beta.app" "/Applications/Xcode.app"
+if [[ -d "/Applications/Xcode.app" ]]; then
+    echo "Xcode is installed"
 fi
 
 [[ ! -d "/Applications/Xcode.app" ]] && exit
@@ -31,3 +22,4 @@ xcodebuild -license accept
 
 sudo -u vagrant -H /bin/bash --login -c \
     'brew install carthage'
+gcc --version

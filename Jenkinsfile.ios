@@ -17,11 +17,6 @@ node('mac-vm-host') {
 
     dir('ios') {
         ansiColor('xterm') {
-            stage('download xcode ') {
-                sh '''
-                    wget -nc -nv --user=anonymous ftp://cliqznas/packermacfiles/Xcode_9.0.1.xip -O Xcode.xip || true
-                '''
-            }
             stage('download commandline tools ') {
                 sh '''
                     cd packages/
