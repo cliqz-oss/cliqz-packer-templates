@@ -23,14 +23,6 @@ node('mac-vm-host') {
                     wget -nc -nv --user=anonymous ftp://cliqznas/packermacfiles/Command_Line_Tools_macOS_10.12_for_Xcode_9.0.1.dmg -O CommandLineTools.dmg || true
                 '''
             }
-            stage('Download packer output'){
-                // sh '''
-                //     cd packer-base
-                //     wget -r --user=anonymous ftp://cliqznas/packer_output || true
-                //     mv -v cliqznas/* /Users/jenkins/jenkins/workspace/browser-ios/vm-image-for-ios/ios/packer-base
-                // '''
-            }
-
             dir('packer') {
                 stage('build') {
                     withEnv(['PACKER_LOG=1',

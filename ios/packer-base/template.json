@@ -45,16 +45,6 @@
       "source": "../packages"
     },
     {
-      "type" : "file",
-      "destination" : "/private/tmp/Xcode.xip",
-      "source" : "../Xcode.xip"
-    },
-    {
-      "type": "file", 
-      "destination": "/private/tmp/set_kcpassword.py",
-      "source": "../scripts/support/set_kcpassword.py"
-    },
-    {
       "type": "shell",
       "execute_command": "chmod +x {{ .Path }}; sudo {{ .Vars }} {{ .Path }}",
       "scripts": [

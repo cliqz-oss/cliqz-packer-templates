@@ -48,11 +48,6 @@
       "type": "file"
     },
     {
-      "destination": "/private/tmp/set_kcpassword.py",
-      "source": "../scripts/support/set_kcpassword.py",
-      "type": "file"
-    },
-    {
       "execute_command": "chmod +x {{ .Path }}; sudo {{ .Vars }} {{ .Path }}",
       "scripts": [
         "../scripts/packages.sh",
@@ -60,10 +55,10 @@
         "../scripts/rvm.sh",
         "../scripts/xcode.sh",
         "../scripts/devtools-enable.sh",
+        "../scripts/ios-simulators.sh",
         "../scripts/npm.sh",
         "../scripts/sshd-config.sh",
         "../scripts/python-pip.sh",
-        "../scripts/autologin.sh",
         "../scripts/system-update.sh",
         "../scripts/create-dirs.sh"
       ],

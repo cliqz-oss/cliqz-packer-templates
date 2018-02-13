@@ -24,7 +24,7 @@ cd packer-base
 packer build -var-file variables.json template.json
 ```
 
-Follow the instructions and continue to install the machine. Install the required Xcode Version Create a Vagrant user and group, and add it to admin group. Validate that the user can run passwordless sudo. Allow Remote login .
+Follow the instructions and continue to install the machine. Install the required Xcode Version Create a Vagrant user and group, Activate Auto login for the user and add it to admin group. Validate that the user can run passwordless sudo. Allow Remote login .
 When the build finished, fetch the resulting VMX file. 
 
 ### Create a configured box

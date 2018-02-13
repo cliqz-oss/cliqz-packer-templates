@@ -3,4 +3,4 @@ if [ "$UPDATE_SYSTEM" != "true" ] && [ "$UPDATE_SYSTEM" != "1" ]; then
 fi
 
 echo "Downloading and installing system updates..."
-softwareupdate -i -a
+softwareupdate -d
