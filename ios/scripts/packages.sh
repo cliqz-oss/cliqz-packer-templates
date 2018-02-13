@@ -3,6 +3,7 @@
 set -eo pipefail
 shopt -s nullglob
 
+echo "XXXXXXXX $(id -un)"
 install_dmg() {
     declare dmg="$1" target="${2:-/}"
     echo "Installing $dmg..."
