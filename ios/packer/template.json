@@ -51,9 +51,9 @@
       "execute_command": "chmod +x {{ .Path }}; sudo {{ .Vars }} {{ .Path }}",
       "scripts": [
         "../scripts/packages.sh",
-        "../scripts/brew.sh",
-        "../scripts/rvm.sh",
         "../scripts/xcode.sh",
+        "../scripts/brew.sh",
+        "../scripts/rvm.sh",        
         "../scripts/devtools-enable.sh",
         "../scripts/ios-simulators.sh",
         "../scripts/npm.sh",

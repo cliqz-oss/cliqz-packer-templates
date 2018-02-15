@@ -9,4 +9,6 @@ sudo -u vagrant -H /bin/bash --login -c " \
 	rvm use ${RUBY_VERSION} 	&& \
 	gem install xcpretty -N 	&& \
 	gem install fastlane	&& \
-	gem install cocoapods"
+	gem install cocoapods   && \
+	pod setup"
+

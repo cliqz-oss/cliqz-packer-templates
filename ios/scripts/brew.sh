@@ -1,12 +1,17 @@
 #!/bin/bash
 
-bundle
-
 set -eo pipefail
 set -x
-source ~/.profile 
 
-sudo xcodebuild -license accept
+sudo -u vagrant -H /bin/bash --login -c " \
+	git config --global http.postBuffer 524288000; \
+	echo '[url \"git@github.com:\"]' >>~/.gitconfig; \
+	echo 'insteadOf = \"https://github.com/\"' >>~/.gitconfig; \
+	touch ~/.bashrc; \
+	echo 'export LANG=en_US.UTF-8' >>~/.profile; \
+	echo 'export LANGUAGE=en_US.UTF-8' >>~/.profile; \
+	echo 'source $HOME/.bashrc' >>~/.profile; \
+	echo 'export LC_ALL=en_US.UTF-8' >>~/.profile"
 
 : | sudo -u vagrant -H ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -16,7 +21,10 @@ sudo -u vagrant -H /bin/bash --login -c \
 sudo -u vagrant -H /bin/bash --login -c \
     'brew install pv wget nss cask'
 
-sudo -u vagrant -H /bin/bash --login -c \
-    'brew cask install java'
 
-sudo -u vagrant -H /bin/bash --login -c 'curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash'
+sudo -u vagrant -H /bin/bash --login -c \
+    'brew install carthage'
+
+sudo -u vagrant -H /bin/bash --login -c '\
+    brew tap caskroom/versions &&\
+    brew cask install java8'
