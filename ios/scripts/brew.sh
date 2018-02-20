@@ -4,9 +4,6 @@ set -eo pipefail
 set -x
 
 sudo -u vagrant -H /bin/bash --login -c " \
-	git config --global http.postBuffer 524288000; \
-	echo '[url \"git@github.com:\"]' >>~/.gitconfig; \
-	echo 'insteadOf = \"https://github.com/\"' >>~/.gitconfig; \
 	touch ~/.bashrc; \
 	echo 'export LANG=en_US.UTF-8' >>~/.profile; \
 	echo 'export LANGUAGE=en_US.UTF-8' >>~/.profile; \
