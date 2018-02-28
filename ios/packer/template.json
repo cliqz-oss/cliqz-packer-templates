@@ -43,6 +43,7 @@
       "command": "sleep {{user `provisioning_delay`}}"
     },
     {
+
       "destination": "/private/tmp/packages/",
       "source": "../packages/",
       "type": "file"
@@ -51,6 +52,7 @@
       "execute_command": "chmod +x {{ .Path }}; sudo {{ .Vars }} {{ .Path }}",
       "scripts": [
         "../scripts/packages.sh",
+        "../scripts/brew.sh",
         "../scripts/xcode.sh",
         "../scripts/brew.sh",
         "../scripts/rvm.sh", 

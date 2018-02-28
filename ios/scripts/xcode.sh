@@ -4,6 +4,7 @@ set -o pipefail
 shopt -s nullglob
 set -x
 
+
 if [[ -d "/Applications/Xcode.app" ]]; then
     echo "Xcode is installed"
 fi
