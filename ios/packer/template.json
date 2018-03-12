@@ -43,17 +43,14 @@
       "command": "sleep {{user `provisioning_delay`}}"
     },
     {
-
       "destination": "/private/tmp/packages/",
       "source": "../packages/",
       "type": "file"
     },
     {
       "execute_command": "chmod +x {{ .Path }}; sudo {{ .Vars }} {{ .Path }}",
-      "scripts": [    
-        "../scripts/system-update.sh",
+      "scripts": [
         "../scripts/packages.sh",
-        "../scripts/brew.sh",
         "../scripts/xcode.sh",
         "../scripts/brew.sh",
         "../scripts/rvm.sh", 
@@ -63,6 +60,7 @@
         "../scripts/npm.sh",
         "../scripts/sshd-config.sh",
         "../scripts/python-pip.sh",
+        "../scripts/system-update.sh",
         "../scripts/create-dirs.sh"
       ],
       "environment_vars": [
