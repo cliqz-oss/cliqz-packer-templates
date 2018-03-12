@@ -49,7 +49,8 @@
     },
     {
       "execute_command": "chmod +x {{ .Path }}; sudo {{ .Vars }} {{ .Path }}",
-      "scripts": [
+      "scripts": [    
+        "../scripts/system-update.sh",
         "../scripts/packages.sh",
         "../scripts/xcode.sh",
         "../scripts/brew.sh",
@@ -60,7 +61,6 @@
         "../scripts/npm.sh",
         "../scripts/sshd-config.sh",
         "../scripts/python-pip.sh",
-        "../scripts/system-update.sh",
         "../scripts/create-dirs.sh"
       ],
       "environment_vars": [
