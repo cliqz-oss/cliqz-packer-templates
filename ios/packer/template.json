@@ -43,6 +43,7 @@
       "command": "sleep {{user `provisioning_delay`}}"
     },
     {
+
       "destination": "/private/tmp/packages/",
       "source": "../packages/",
       "type": "file"
@@ -52,6 +53,7 @@
       "scripts": [    
         "../scripts/system-update.sh",
         "../scripts/packages.sh",
+        "../scripts/brew.sh",
         "../scripts/xcode.sh",
         "../scripts/brew.sh",
         "../scripts/rvm.sh", 
