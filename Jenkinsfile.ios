@@ -20,7 +20,7 @@ node('mac-vm-host') {
             stage('download commandline tools ') {
                 sh '''
                     cd packages/
-                    wget -nc -nv --user=anonymous ftp://cliqznas/packermacfiles/Command_Line_Tools_macOS_10.12_for_Xcode_9.0.1.dmg -O CommandLineTools.dmg || true
+                    wget -nc -nv --user=anonymous ftp://cliqznas/packermacfiles/Xcode-9.3/Command_Line_Tools_macOS_10.13_for_Xcode_9.3.dmg -O CommandLineTools.dmg || true
                 '''
             }
             dir('packer') {

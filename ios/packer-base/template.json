@@ -68,7 +68,7 @@
     }
   ],
   "variables": {
-    "vm_name": "osx-xcode-7.3",
+    "vm_name": "osx-xcode-9.3",
     "autologin": "false",
     "chef_version": "none",
     "facter_version": "none",
