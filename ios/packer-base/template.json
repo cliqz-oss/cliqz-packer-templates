@@ -2,35 +2,39 @@
   "builders": [
     {
       "boot_wait": "2s",
+      "vm_name":"MacOSHighSierra",
       "disk_size": 70400,
-      "guest_os_type": "darwin12-64",
-      "iso_checksum_type": "sha256",
+      "hard_drive_interface":"sata",
+      "sata_port_count":"2",
+      "guest_os_type": "MacOS1013_64",
+      "iso_checksum_type": "md5",
       "iso_url": "{{user `iso_url`}}",
       "iso_checksum" : "{{user `iso_checksum`}}",
+      "iso_interface":"sata",
       "shutdown_command": "echo '{{user `username`}}'|sudo -S shutdown -h now",
-      "skip_compaction": false,
       "communicator": "ssh",
       "ssh_port": 22,
       "ssh_username": "{{user `username`}}",
       "ssh_password": "{{user `password`}}",
       "ssh_wait_timeout": "10000s",
-      "tools_upload_flavor": "darwin",
-      "tools_upload_path": "/Users/{{ user `username`}}/{{ .Flavor }}.iso",
-      "type": "vmware-iso",
+      "type": "virtualbox-iso",
       "headless": true,
-      "vnc_bind_address": "0.0.0.0",
-      "vmx_data": {
-        "cpuid.coresPerSocket": "1",
-        "memsize": "3072",
-        "numvcpus": "2",
-        "firmware": "efi",
-        "keyboardAndMouseProfile": "macProfile",
-        "smc.present": "TRUE",
-        "hpet0.present": "TRUE",
-        "ich7m.present": "TRUE",
-        "ehci.present": "TRUE",
-        "usb.present": "TRUE"
-      }
+      
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory","4096"],
+        ["modifyvm", "{{.Name}}", "--cpus", "2"],
+        ["modifyvm", "{{.Name}}", "--firmware", "efi"],
+        ["modifyvm", "{{.Name}}", "--hpet", "on"],
+        ["modifyvm", "{{.Name}}", "--usbehci", "on"],
+        ["modifyvm", "{{.Name}}", "--usb", "on"],
+        ["modifyvm", "{{.Name}}", "--mouse", "usbtablet"],
+        ["modifyvm", "{{.Name}}", "--keyboard", "usb"],
+        ["modifyvm", "{{.Name}}", "--audio", "none"],
+        ["modifyvm", "{{.Name}}", "--vram", "128"],
+        ["modifyvm", "{{.Name}}", "--chipset", "ich9"],
+        ["modifyvm", "{{.Name}}", "--apic", "on"],
+        ["modifyvm", "{{.Name}}", "--pae", "on"]
+      ]
     }
   ],
   "min_packer_version": "0.7.0",
@@ -48,8 +52,7 @@
       "type": "shell",
       "execute_command": "chmod +x {{ .Path }}; sudo {{ .Vars }} {{ .Path }}",
       "scripts": [
-        "../scripts/vagrant.sh",
-        "../scripts/vmware.sh"
+        "../scripts/vagrant.sh"
       ],
       "expect_disconnect": true,
       "environment_vars": [

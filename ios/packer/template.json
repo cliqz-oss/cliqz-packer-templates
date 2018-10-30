@@ -4,29 +4,30 @@
       "boot_wait": "2s",
       "source_path": "{{ user `source_path`}}",
       "shutdown_command": "echo '{{user `username`}}'|sudo -S shutdown -h now",
-      "skip_compaction": false,
       "communicator": "ssh",
       "ssh_file_transfer_method":"sftp",
       "ssh_port": 22,
       "ssh_username": "{{user `username`}}",
       "ssh_password": "{{user `password`}}",
       "ssh_wait_timeout": "10000s",
-      "tools_upload_flavor": "darwin",
-      "type": "vmware-vmx",
+      "type": "virtualbox-ovf",
       "headless": true,
       "output_directory": "{{ user `output_directory` }}",
-      "vmx_data": {
-        "cpuid.coresPerSocket": "1",
-        "memsize": "3072",
-        "numvcpus": "2",
-        "firmware": "efi",
-        "keyboardAndMouseProfile": "macProfile",
-        "smc.present": "TRUE",
-        "hpet0.present": "TRUE",
-        "ich7m.present": "TRUE",
-        "ehci.present": "TRUE",
-        "usb.present": "TRUE"
-      }
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory","4096"],
+        ["modifyvm", "{{.Name}}", "--cpus", "2"],
+        ["modifyvm", "{{.Name}}", "--firmware", "efi"],
+        ["modifyvm", "{{.Name}}", "--hpet", "on"],
+        ["modifyvm", "{{.Name}}", "--usbehci", "on"],
+        ["modifyvm", "{{.Name}}", "--usb", "on"],
+        ["modifyvm", "{{.Name}}", "--mouse", "usbtablet"],
+        ["modifyvm", "{{.Name}}", "--keyboard", "usb"],
+        ["modifyvm", "{{.Name}}", "--audio", "none"],
+        ["modifyvm", "{{.Name}}", "--vram", "128"],
+        ["modifyvm", "{{.Name}}", "--chipset", "ich9"],
+        ["modifyvm", "{{.Name}}", "--apic", "on"],
+        ["modifyvm", "{{.Name}}", "--pae", "on"]
+      ]
     }
   ],
   "min_packer_version": "0.7.0",
@@ -80,7 +81,7 @@
     }
   ],
   "variables": {
-    "vm_name": "osx-xcode-9.0.1",
+    "vm_name": "osx-10.13-xcode-9.3",
     "autologin": "false",
     "chef_version": "none",
     "facter_version": "none",
