@@ -1,6 +1,6 @@
 #!/bin/env groovy
 
-node('osx-joe') {
+node('mac-vm-host') {
     stage('checkout') {
         checkout scm
     }
@@ -18,7 +18,7 @@ node('osx-joe') {
                     withEnv(['PACKER_LOG=1',
                             "PACKER_CACHE_DIR=${params.OUTPUT_DIRECTORY}"
                         ]) {
-                        sh "/Users/kiizajosephbazaare/packer/packer build -var-file variables.json -var source_path=${params.SOURCE_PATH} -var output_directory=${params.OUTPUT_DIRECTORY} template.json"
+                        sh "/Users/jenkins/jenkins/packer build -var-file variables.json -var source_path=${params.SOURCE_PATH} -var output_directory=${params.OUTPUT_DIRECTORY} template.json"
                     }
                 }
                 stage ('copy box to repository'){
