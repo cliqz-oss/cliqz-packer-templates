@@ -10,6 +10,7 @@
       "iso_checksum_type": "md5",
       "iso_url": "{{user `iso_url`}}",
       "iso_checksum" : "{{user `iso_checksum`}}",
+      "guest_additions_url":"/Applications/VirtualBox.app/Contents/MacOS/VBoxGuestAdditions.iso",
       "iso_interface":"sata",
       "shutdown_command": "echo '{{user `username`}}'|sudo -S shutdown -h now",
       "communicator": "ssh",
@@ -33,6 +34,7 @@
         ["modifyvm", "{{.Name}}", "--vram", "128"],
         ["modifyvm", "{{.Name}}", "--chipset", "ich9"],
         ["modifyvm", "{{.Name}}", "--apic", "on"],
+        ["modifyvm", "{{.Name}}", "--vrde", "on"],
         ["modifyvm", "{{.Name}}", "--pae", "on"]
       ]
     }
