@@ -21,8 +21,8 @@
       "headless": true,
       
       "vboxmanage": [
-        ["modifyvm", "{{.Name}}", "--memory","4096"],
-        ["modifyvm", "{{.Name}}", "--cpus", "2"],
+        ["modifyvm", "{{.Name}}", "--memory","8000"],
+        ["modifyvm", "{{.Name}}", "--cpus", "4"],
         ["modifyvm", "{{.Name}}", "--firmware", "efi"],
         ["modifyvm", "{{.Name}}", "--hpet", "on"],
         ["modifyvm", "{{.Name}}", "--usbehci", "on"],
@@ -71,7 +71,7 @@
     }
   ],
   "variables": {
-    "vm_name": "osx-xcode-9.3",
+    "vm_name": "osx-xcode-10",
     "autologin": "false",
     "chef_version": "none",
     "facter_version": "none",
