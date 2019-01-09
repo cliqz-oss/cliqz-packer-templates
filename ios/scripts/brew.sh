@@ -23,6 +23,9 @@ sudo -u vagrant -H /bin/bash --login -c \
 sudo -u vagrant -H /bin/bash --login -c \
     'brew install carthage'
 
+sudo -u vagrant -H /bin/bash --login -c \
+	'brew install getsentry/tools/sentry-cli'
+
 sudo -u vagrant -H /bin/bash --login -c '\
     brew tap caskroom/versions &&\
     brew cask install java8'
