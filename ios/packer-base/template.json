@@ -73,7 +73,7 @@
     }
   ],
   "variables": {
-    "vm_name": "osx-xcode-10",
+    "vm_name": "osx-xcode-10.1",
     "autologin": "false",
     "chef_version": "none",
     "facter_version": "none",

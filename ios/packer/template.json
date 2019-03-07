@@ -35,7 +35,7 @@
      {
       "type": "vagrant",
       "keep_input_artifact": false,
-      "output": "{{user `output-directory`}}browser-f-ios10.12.6-{{user `version`}}.box"
+      "output": "{{user `output-directory`}}browser-ios-10.13.6-{{user `version`}}.box"
      }
   ],
   "provisioners": [

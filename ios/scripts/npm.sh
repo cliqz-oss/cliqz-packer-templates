@@ -6,11 +6,13 @@ sudo -u vagrant -H /bin/bash --login -c 'curl -o- https://raw.githubusercontent.
 
 sudo -u vagrant -H /bin/bash --login -c ' \
 	command -v nvm; \
-	nvm install 8.5.0 && \
-	nvm use 8.5.0 && \
-	nvm alias default 8.5.0'
+	nvm install 9.11.2 && \
+	nvm use 9.11.2 && \
+	nvm alias default 9.11.2'
 
 sudo -u vagrant -H /bin/bash --login -c ' \
+	npm install -g npm@6.5.0 && \
 	npm install -g yarn && \
 	npm install -g appium && \
+	npm install -g appdmg && \
 	npm install -g wd'
