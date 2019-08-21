@@ -1,0 +1,13 @@
+#!/bin/env groovy
+
+node('gideon') {
+  stage('checkout') {
+    checkout scm
+  }
+  
+  stage('build') {
+    ansiColor('xterm') {
+      sh('packer build macos/templates/mojave-base.json')
+    }
+  }
+}
